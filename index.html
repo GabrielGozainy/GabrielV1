@@ -9,12 +9,86 @@
 </head>
 <body>
 
-    <div id="large-header" class="large-header" style="height: 340px;">
-        <canvas id="demo-canvas" width="1366" height="340"></canvas>
-        <h1 class="main-title">Connect <span class="thin">Three</span></h1>
-      </div>
+    <div id="kiko-slider">
 
-<script src="app.js"></script>
-<noscript>ERROR JS</noscript>
+        <ul class="slider">
+            <li id="slide1">
+                <img src="fotos/Perfil .jpg" />
+            </li>
+            <li id="slide2">
+                <img src="fotos/portada.jpg" />
+            </li>
+            <li id="slide3">
+                <img src="fotos/SAGTENOLOGY3.jpg">
+            </li>
+        </ul>
+
+        <ul class="menu">
+            <li>
+                <a href="#slide1">1</a>
+            </li>
+            <li>
+                <a href="#slide2">2</a>
+            </li>
+            <li>
+                <a href="#slide3">3</a>
+            </li>
+        </ul>
+
+    </div>
+
+<h3 class="heading"> Galeria Videos </h3>
+
+<!--Aqui abajo son la galeria de videos, segun yo para agregar
+mas es copiar y pegar-->
+
+<div class="container">
+    <div class="main-video">
+        <div class="video"> <!-- Video principal-->
+            <video src="video/intro (2).mp4" controls muted autoplay></video>
+            <h3 class="title">Intro Canal SGARG</h3>
+        </div>
+    </div>
+    <div class="video-list"> <!--Listas de videos-->
+        <div class="vid active">
+            <video src="video/intro (2).mp4" muted></video>
+            <h3 class="title">Intro Canal SGARG</h3>
+        </div>
+        <div class="vid">
+            <video src="video/Diamond_Heart_exported.mp4" muted></video>
+            <h3 class="title">Diamond Heart</h3>
+        </div>
+        <div class="vid">
+            <video src="video/Zero Two Clips HD..mp4" muted></video>
+            <h3 class="title">Zero Two</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Ni idea que sirven los primeros 3 let del script
+pero el "let src = video", cambia los videos del listado
+y el 2do "let text = video", cambia los texto al nuevo video -->
+
+<script> 
+
+let ListVideo = document.querySelectorAll('.video-list .vid');
+let mainvideo = document.querySelector('.main-video video');
+let title = document.querySelector('.main-video .title');
+
+ListVideo.forEach(video =>{
+    video.onclick = () =>{
+        ListVideo.forEach(vid => vid.classList.remove('active'));
+        video.classList.add('active');
+        if(video.classList.contains('active')){
+            let src = video.children[0].getAttribute('src');
+            mainvideo.src = src;
+            let text = video.children[1].innerHTML;
+            title.innerHTML = text;
+        };
+    };
+});
+
+</script>
+
 </body>
 </html>
